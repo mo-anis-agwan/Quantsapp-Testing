@@ -14,6 +14,8 @@
 		0CD116DB27286EE500388BE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD116DA27286EE500388BE9 /* Assets.xcassets */; };
 		0CD116DE27286EE500388BE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD116DC27286EE500388BE9 /* LaunchScreen.storyboard */; };
 		0CD116E6272870CF00388BE9 /* StockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD116E5272870CF00388BE9 /* StockManager.swift */; };
+		0CD116EB2728809D00388BE9 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD116EA2728809C00388BE9 /* RoundButton.swift */; };
+		0CD116ED2728830100388BE9 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD116EC2728830100388BE9 /* Stock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		0CD116DD27286EE500388BE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CD116DF27286EE500388BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CD116E5272870CF00388BE9 /* StockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManager.swift; sourceTree = "<group>"; };
+		0CD116EA2728809C00388BE9 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		0CD116EC2728830100388BE9 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				0CD116E5272870CF00388BE9 /* StockManager.swift */,
+				0CD116EC2728830100388BE9 /* Stock.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -81,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				0CD116D527286EDB00388BE9 /* StockViewController.swift */,
+				0CD116EA2728809C00388BE9 /* RoundButton.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,6 +172,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CD116E6272870CF00388BE9 /* StockManager.swift in Sources */,
+				0CD116EB2728809D00388BE9 /* RoundButton.swift in Sources */,
+				0CD116ED2728830100388BE9 /* Stock.swift in Sources */,
 				0CD116D627286EDB00388BE9 /* StockViewController.swift in Sources */,
 				0CD116D227286EDB00388BE9 /* AppDelegate.swift in Sources */,
 				0CD116D427286EDB00388BE9 /* SceneDelegate.swift in Sources */,
