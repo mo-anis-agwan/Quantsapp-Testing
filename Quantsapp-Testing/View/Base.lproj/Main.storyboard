@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,6 +43,9 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="allbtnpressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jg4-6h-Z5M"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaD-6f-ah9" customClass="RoundButton" customModule="Quantsapp_Testing" customModuleProvider="target">
                                         <rect key="frame" x="80" y="0.0" width="74.5" height="31"/>
@@ -57,6 +59,9 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="Lbtnpressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tiN-Oq-VEY"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xj-yu-DW7" customClass="RoundButton" customModule="Quantsapp_Testing" customModuleProvider="target">
                                         <rect key="frame" x="159.5" y="0.0" width="75" height="31"/>
@@ -70,6 +75,9 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="scBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5rS-Xf-3JW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdv-dW-aBm" customClass="RoundButton" customModule="Quantsapp_Testing" customModuleProvider="target">
                                         <rect key="frame" x="239.5" y="0.0" width="74.5" height="31"/>
@@ -83,6 +91,9 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="sBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T2j-De-xAf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOv-dL-gvx" customClass="RoundButton" customModule="Quantsapp_Testing" customModuleProvider="target">
                                         <rect key="frame" x="319" y="0.0" width="75" height="31"/>
@@ -96,29 +107,64 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="luBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mPU-7W-i1C"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7wA-jh-YfI">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7wA-jh-YfI">
                                 <rect key="frame" x="20" y="127" width="374" height="735"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3fG-04-ecr">
-                                    <size key="itemSize" width="128" height="128"/>
+                                <color key="backgroundColor" name="backgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="3fG-04-ecr">
+                                    <size key="itemSize" width="120" height="120"/>
+                                    <size key="estimatedItemSize" width="120" height="120"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1BJ-3x-1C5">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stockCell" id="1BJ-3x-1C5" customClass="StockCollectionViewCell" customModule="Quantsapp_Testing" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uRq-6l-G38">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MINDTREE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yd6-ZQ-CBf">
+                                                    <rect key="frame" x="8" y="8" width="104" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.09%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kq6-2a-D0e">
+                                                    <rect key="frame" x="8" y="37.5" width="104" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kq6-2a-D0e" firstAttribute="top" secondItem="yd6-ZQ-CBf" secondAttribute="bottom" constant="8" id="3Gk-0D-P2o"/>
+                                                <constraint firstAttribute="trailing" secondItem="yd6-ZQ-CBf" secondAttribute="trailing" constant="8" id="H1h-dU-ct1"/>
+                                                <constraint firstItem="yd6-ZQ-CBf" firstAttribute="leading" secondItem="uRq-6l-G38" secondAttribute="leading" constant="8" id="Nmm-ct-e0t"/>
+                                                <constraint firstItem="kq6-2a-D0e" firstAttribute="leading" secondItem="uRq-6l-G38" secondAttribute="leading" constant="8" id="j2a-Ap-9py"/>
+                                                <constraint firstAttribute="trailing" secondItem="kq6-2a-D0e" secondAttribute="trailing" constant="8" id="spu-pN-sGE"/>
+                                                <constraint firstItem="yd6-ZQ-CBf" firstAttribute="top" secondItem="uRq-6l-G38" secondAttribute="top" constant="8" id="yRM-CJ-ltK"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" name="Lcolor"/>
+                                        <size key="customSize" width="120" height="120"/>
+                                        <connections>
+                                            <outlet property="priceChangePercent" destination="kq6-2a-D0e" id="y50-jG-Gkk"/>
+                                            <outlet property="stockName" destination="yd6-ZQ-CBf" id="gIL-zp-Tp4"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="xeQ-eW-0dP"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="It4-fa-zhK"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -129,11 +175,16 @@
                             <constraint firstItem="AZQ-dd-XkC" firstAttribute="top" secondItem="8Xh-kT-537" secondAttribute="bottom" constant="10" id="8Fe-pi-ldx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Xh-kT-537" secondAttribute="trailing" constant="20" id="Bjs-uA-L8j"/>
                             <constraint firstItem="8Xh-kT-537" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Kou-ro-8iO"/>
+                            <constraint firstItem="7wA-jh-YfI" firstAttribute="top" secondItem="AZQ-dd-XkC" secondAttribute="bottom" constant="8" symbolic="YES" id="YJW-oT-BpG"/>
                             <constraint firstItem="AZQ-dd-XkC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="aCn-b4-jnS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7wA-jh-YfI" secondAttribute="trailing" constant="20" id="bfO-9O-aa4"/>
+                            <constraint firstItem="7wA-jh-YfI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="poG-L0-8eU"/>
+                            <constraint firstItem="7wA-jh-YfI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="vna-7B-cz7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="searchTextField" destination="8Xh-kT-537" id="Vop-ia-8Wc"/>
+                        <outlet property="stocksCollectionView" destination="7wA-jh-YfI" id="1TF-Kb-zJm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -147,6 +198,9 @@
         </namedColor>
         <namedColor name="LbuttonColor">
             <color red="0.20000000000000001" green="0.4392156862745098" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Lcolor">
+            <color red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SCbuttonColor">
             <color red="0.40784313725490196" green="0.43529411764705883" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -162,9 +216,6 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

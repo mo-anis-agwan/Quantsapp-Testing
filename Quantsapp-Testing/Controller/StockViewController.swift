@@ -15,8 +15,9 @@ class StockViewController: UIViewController {
     var shortStockPrice: [Stock]?
     var luStockPrice: [Stock]?
     var scStockPrice: [Stock]?
+    var collArr: [Stock]?
     
-//    @IBOutlet weak var stockCollectionView: UICollectionView!
+    @IBOutlet weak var stocksCollectionView: UICollectionView!
     @IBOutlet weak var searchTextField: UITextField!
     
     override func viewDidLoad() {
@@ -24,17 +25,55 @@ class StockViewController: UIViewController {
         // Do any additional setup after loading the view.
         stockManager.delegate = self
         searchTextField.delegate = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         stockManager.performRequest(with: "https://qapptemporary.s3.ap-south-1.amazonaws.com/test/synopsis.json")
     }
+    
+    @IBAction func allbtnpressed(_ sender: Any) {
+        self.collArr = self.allStockPrice
+        DispatchQueue.main.async {
+            self.stocksCollectionView.reloadData()
+        }
+    }
+    
+    @IBAction func Lbtnpressed(_ sender: Any) {
+        self.collArr = self.longStockPrice
+        DispatchQueue.main.async {
+            self.stocksCollectionView.reloadData()
+        }
+    }
+    
+    @IBAction func scBtnPressed(_ sender: Any) {
+        self.collArr = self.scStockPrice
+        DispatchQueue.main.async {
+            self.stocksCollectionView.reloadData()
+        }
+    }
+    
+    @IBAction func sBtnPressed(_ sender: Any) {
+        self.collArr = self.shortStockPrice
+        DispatchQueue.main.async {
+            self.stocksCollectionView.reloadData()
+        }
+    }
+    
+    @IBAction func luBtnPressed(_ sender: Any) {
+        self.collArr = self.luStockPrice
+        DispatchQueue.main.async {
+            self.stocksCollectionView.reloadData()
+        }
+    }
+    
+    
+    
     
 }
 
 extension StockViewController: StockmanagerDelegate {
     func didUpdateStocks(_ stockManager: StockManager, stock: StockModel) {
-        //print("STOCKS L: \(stock.l)")
-        
-        //print("SPLIT: \(stock.l.split(separator: ";"))")
         
         let allStr = stock.l + stock.lu + stock.s + stock.sc
         
@@ -44,6 +83,12 @@ extension StockViewController: StockmanagerDelegate {
         self.luStockPrice = stringSplitArr(stock.lu)
         self.shortStockPrice = stringSplitArr(stock.s)
         self.scStockPrice = stringSplitArr(stock.sc)
+        
+        self.collArr = self.allStockPrice
+        
+        DispatchQueue.main.async {
+            self.stocksCollectionView.reloadData()
+        }
     }
     
     func didFailWithError(error: Error) {
@@ -73,13 +118,32 @@ extension StockViewController: UITextFieldDelegate {
     
 }
 
-//extension StockViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        //return cell
-//    }
-//
-//}
+extension StockViewController:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 120, height: 120)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.collArr?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                
+        let obj = self.collArr![indexPath.row]
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stockCell", for: indexPath) as! StockCollectionViewCell
+        
+        cell.stockName.text = obj.symbol
+        cell.priceChangePercent.text = "\(obj.priceChangePercent)%"
+        
+        cell.backgroundColor = UIColor(named: "Lcolor")
+        
+        return cell
+    }
+    
+    
+    
+    
+}

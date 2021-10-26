@@ -16,6 +16,7 @@
 		0CD116E6272870CF00388BE9 /* StockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD116E5272870CF00388BE9 /* StockManager.swift */; };
 		0CD116EB2728809D00388BE9 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD116EA2728809C00388BE9 /* RoundButton.swift */; };
 		0CD116ED2728830100388BE9 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD116EC2728830100388BE9 /* Stock.swift */; };
+		0CD116EF27289AD200388BE9 /* StockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD116EE27289AD200388BE9 /* StockCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0CD116E5272870CF00388BE9 /* StockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManager.swift; sourceTree = "<group>"; };
 		0CD116EA2728809C00388BE9 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		0CD116EC2728830100388BE9 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		0CD116EE27289AD200388BE9 /* StockCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				0CD116D527286EDB00388BE9 /* StockViewController.swift */,
 				0CD116EA2728809C00388BE9 /* RoundButton.swift */,
+				0CD116EE27289AD200388BE9 /* StockCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				0CD116D627286EDB00388BE9 /* StockViewController.swift in Sources */,
 				0CD116D227286EDB00388BE9 /* AppDelegate.swift in Sources */,
 				0CD116D427286EDB00388BE9 /* SceneDelegate.swift in Sources */,
+				0CD116EF27289AD200388BE9 /* StockCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
