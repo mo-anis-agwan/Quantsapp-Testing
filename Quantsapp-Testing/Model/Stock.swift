@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Stock {
     let symbol: String
@@ -13,4 +14,5 @@ struct Stock {
     let openInterest: String
     let priceChangePercent: String
     let openInterestChangePercent: String
+    let colorCode: UIColor
 }

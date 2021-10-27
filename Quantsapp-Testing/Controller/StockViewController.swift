@@ -25,11 +25,19 @@ class StockViewController: UIViewController {
         // Do any additional setup after loading the view.
         stockManager.delegate = self
         searchTextField.delegate = self
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+         
+        view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         stockManager.performRequest(with: "https://qapptemporary.s3.ap-south-1.amazonaws.com/test/synopsis.json")
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func allbtnpressed(_ sender: Any) {
@@ -67,6 +75,9 @@ class StockViewController: UIViewController {
         }
     }
     
+    @IBAction func searchBtnPressed(_ sender: Any) {
+        searchTextField.endEditing(true)
+    }
     
     
     
@@ -75,16 +86,14 @@ class StockViewController: UIViewController {
 extension StockViewController: StockmanagerDelegate {
     func didUpdateStocks(_ stockManager: StockManager, stock: StockModel) {
         
-        let allStr = stock.l + stock.lu + stock.s + stock.sc
+        self.longStockPrice = stringSplitArr(stock.l, bgColor: UIColor(named: "Lcolor") ?? UIColor.green)
+        self.luStockPrice = stringSplitArr(stock.lu, bgColor: UIColor(named: "LUcolor") ?? UIColor.green)
+        self.shortStockPrice = stringSplitArr(stock.s, bgColor: UIColor(named: "Scolor") ?? UIColor.green)
+        self.scStockPrice = stringSplitArr(stock.sc, bgColor: UIColor(named: "SCcolor") ?? UIColor.green)
         
-        self.allStockPrice = stringSplitArr(allStr)
-        
-        self.longStockPrice = stringSplitArr(stock.l)
-        self.luStockPrice = stringSplitArr(stock.lu)
-        self.shortStockPrice = stringSplitArr(stock.s)
-        self.scStockPrice = stringSplitArr(stock.sc)
-        
+        self.allStockPrice = self.longStockPrice! + self.luStockPrice! + self.shortStockPrice! + self.scStockPrice!
         self.collArr = self.allStockPrice
+        
         
         DispatchQueue.main.async {
             self.stocksCollectionView.reloadData()
@@ -96,14 +105,14 @@ extension StockViewController: StockmanagerDelegate {
     }
     
     
-    func stringSplitArr(_ str: String) -> [Stock] {
+    func stringSplitArr(_ str: String, bgColor: UIColor) -> [Stock] {
         let tempArr = str.split(separator: ";")
         var tempStockArr = [Stock]()
         
         tempArr.forEach { stc in
             //print("STC: \(stc)")
             let stcTempArr = stc.split(separator: ",")
-            let stck = Stock(symbol: String(stcTempArr[0]), price: String(stcTempArr[1]), openInterest: String(stcTempArr[2]), priceChangePercent: String(stcTempArr[3]), openInterestChangePercent: String(stcTempArr[4]))
+            let stck = Stock(symbol: String(stcTempArr[0]), price: String(stcTempArr[1]), openInterest: String(stcTempArr[2]), priceChangePercent: String(stcTempArr[3]), openInterestChangePercent: String(stcTempArr[4]), colorCode: bgColor)
             //print("STOCK: \(stck)")
             tempStockArr.append(stck)
             }
@@ -115,6 +124,36 @@ extension StockViewController: StockmanagerDelegate {
 }
 
 extension StockViewController: UITextFieldDelegate {
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.endEditing(true)
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            return true
+        } else {
+            textField.placeholder = "Search"
+            return false
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let searchText = searchTextField.text {
+            let tempArr = self.allStockPrice?.filter({ (stock) in
+                stock.symbol.contains(searchText.uppercased())
+            })
+
+            textField.resignFirstResponder()
+            self.collArr = tempArr
+            DispatchQueue.main.async {
+                self.stocksCollectionView.reloadData()
+            }
+        }
+    }
     
 }
 
@@ -136,9 +175,19 @@ extension StockViewController:UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stockCell", for: indexPath) as! StockCollectionViewCell
         
         cell.stockName.text = obj.symbol
-        cell.priceChangePercent.text = "\(obj.priceChangePercent)%"
         
-        cell.backgroundColor = UIColor(named: "Lcolor")
+        if let pricePercent = Double(obj.priceChangePercent) {
+            let percent = pricePercent * 100
+            let percentString = String(format: "%.3f", percent)
+            
+            cell.priceChangePercent.text = "\(percentString)%"
+        } else {
+            cell.priceChangePercent.text = "\(obj.priceChangePercent)%"
+        }
+        
+        
+        
+        cell.backgroundColor = obj.colorCode
         
         return cell
     }

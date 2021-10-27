@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,16 +19,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Xh-kT-537">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Jf7-XV-SVH">
                                 <rect key="frame" x="20" y="44" width="374" height="34"/>
-                                <color key="backgroundColor" red="0.11372549019607843" green="0.16078431372549018" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="VjB-8y-43A"/>
-                                </connections>
-                            </textField>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="qTn-nr-04o">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                        <color key="backgroundColor" red="0.1137254902" green="0.16078431369999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                <color key="value" systemColor="systemGray5Color"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="WaF-Cp-GbP"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" systemColor="systemGray3Color"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AZQ-dd-XkC">
                                 <rect key="frame" x="10" y="88" width="394" height="31"/>
                                 <subviews>
@@ -170,20 +186,20 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8Xh-kT-537" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="4Fy-O1-Uwd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AZQ-dd-XkC" secondAttribute="trailing" constant="10" id="6ix-Vh-yWN"/>
-                            <constraint firstItem="AZQ-dd-XkC" firstAttribute="top" secondItem="8Xh-kT-537" secondAttribute="bottom" constant="10" id="8Fe-pi-ldx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Xh-kT-537" secondAttribute="trailing" constant="20" id="Bjs-uA-L8j"/>
-                            <constraint firstItem="8Xh-kT-537" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Kou-ro-8iO"/>
+                            <constraint firstItem="AZQ-dd-XkC" firstAttribute="top" secondItem="Jf7-XV-SVH" secondAttribute="bottom" constant="10" id="CMb-Cb-WaD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jf7-XV-SVH" secondAttribute="trailing" constant="20" id="DcS-8K-B5J"/>
+                            <constraint firstItem="Jf7-XV-SVH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Y10-EV-lda"/>
                             <constraint firstItem="7wA-jh-YfI" firstAttribute="top" secondItem="AZQ-dd-XkC" secondAttribute="bottom" constant="8" symbolic="YES" id="YJW-oT-BpG"/>
                             <constraint firstItem="AZQ-dd-XkC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="aCn-b4-jnS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7wA-jh-YfI" secondAttribute="trailing" constant="20" id="bfO-9O-aa4"/>
                             <constraint firstItem="7wA-jh-YfI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="poG-L0-8eU"/>
                             <constraint firstItem="7wA-jh-YfI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="vna-7B-cz7"/>
+                            <constraint firstItem="Jf7-XV-SVH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xc0-SN-tow"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="searchTextField" destination="8Xh-kT-537" id="Vop-ia-8Wc"/>
+                        <outlet property="searchTextField" destination="qTn-nr-04o" id="LwQ-vS-glx"/>
                         <outlet property="stocksCollectionView" destination="7wA-jh-YfI" id="1TF-Kb-zJm"/>
                     </connections>
                 </viewController>
@@ -192,6 +208,23 @@
             <point key="canvasLocation" x="18.840579710144929" y="79.6875"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="8xj-yu-DW7">
+            <size key="intrinsicContentSize" width="43" height="31"/>
+        </designable>
+        <designable name="gdv-dW-aBm">
+            <size key="intrinsicContentSize" width="33" height="31"/>
+        </designable>
+        <designable name="k4J-ge-2Ia">
+            <size key="intrinsicContentSize" width="40.5" height="31"/>
+        </designable>
+        <designable name="uOv-dL-gvx">
+            <size key="intrinsicContentSize" width="42" height="31"/>
+        </designable>
+        <designable name="yaD-6f-ah9">
+            <size key="intrinsicContentSize" width="32" height="31"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="LUbuttonColor">
             <color red="0.11764705882352941" green="0.36078431372549019" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -216,6 +249,12 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
